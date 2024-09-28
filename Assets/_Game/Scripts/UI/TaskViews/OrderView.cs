@@ -16,7 +16,6 @@ namespace MergeAndServe.UI
 
         [SerializeField] private OrderItemView itemViewPrefab;
         [SerializeField] private Transform container;
-
         [SerializeField] private Button confirmButton;
 
         [Inject] private OGAddressableService _addressableService;
@@ -25,6 +24,7 @@ namespace MergeAndServe.UI
 
         private OrderData _orderData;
         private List<OrderItemView> _orderItemViews;
+        private CanvasGroup _confirmButtonCanvasGroup;
 
         #endregion
 
@@ -86,6 +86,8 @@ namespace MergeAndServe.UI
         private void SetupUI()
         {
             _orderItemViews = new List<OrderItemView>();
+            _confirmButtonCanvasGroup = confirmButton.GetComponent<CanvasGroup>();
+            SetReadyState(false);
 
             for (int i = 0; i < _orderData.Items.Count; i++)
             {
@@ -98,7 +100,7 @@ namespace MergeAndServe.UI
 
         private void OnServeButtonClicked()
         {
-            confirmButton.gameObject.SetActive(false);
+            SetReadyState(false);
             SignalBus.Fire(new GameSignals.ServeRequested()
                            {
                                OrderData = _orderData,
@@ -124,7 +126,8 @@ namespace MergeAndServe.UI
 
         private void SetReadyState(bool isReady)
         {
-            confirmButton.gameObject.SetActive(isReady);
+            _confirmButtonCanvasGroup.alpha = isReady ? 1.0f : 0.0f;
+            _confirmButtonCanvasGroup.interactable = isReady;
         }
 
         private bool IsServeActive()

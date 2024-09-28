@@ -1,6 +1,5 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using MergeAndServe.Data;
 using MergeAndServe.Factorys;
 using MergeAndServe.Interfaces;
