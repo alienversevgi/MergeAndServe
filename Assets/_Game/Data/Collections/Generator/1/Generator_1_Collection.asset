@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3103329045614c809c57fd1756f6fcb5, type: 3}
+  m_Name: Generator_1_Collection
+  m_EditorClassIdentifier: 
+  ShortCode: Generator_1
+  Items:
+  - m_AssetGUID: 19bf4c19c5d4d3e4698ae5cda1153eb1
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 950834eb83c5ade4aa4998231955e92d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: aab905826af92e44b9db1f0584ab3ab5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 21b4b9dbe1423a348a9254080d8a40ea
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 975c2536b7bbc6e4f9d22e876c966132
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
