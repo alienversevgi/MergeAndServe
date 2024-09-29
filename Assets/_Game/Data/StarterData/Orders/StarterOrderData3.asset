@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684258b54bae4a69969d14b061634bcd, type: 3}
   m_Name: StarterOrderData3
   m_EditorClassIdentifier: 
-  Id: 3
+  Id: cet
   Items:
   - Product_2_4

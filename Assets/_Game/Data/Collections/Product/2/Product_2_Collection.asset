@@ -12,25 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3103329045614c809c57fd1756f6fcb5, type: 3}
   m_Name: Product_2_Collection
   m_EditorClassIdentifier: 
-  ShortCode: Product_2
+  Id: 2
+  Type: 0
   Items:
-  - m_AssetGUID: bd98dfff3cdc3d7409f1ce106b760f4e
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 7946311abaeebd74a9c3d0063b20f89e
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: d485e44466a5085418f3b00b522f5561
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 6f4762f7240b3d740ad69edf465538e1
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: c17ae3f52784abe42b7017554a7a95c5
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  - {fileID: 11400000, guid: bd98dfff3cdc3d7409f1ce106b760f4e, type: 2}
+  - {fileID: 11400000, guid: 7946311abaeebd74a9c3d0063b20f89e, type: 2}
+  - {fileID: 11400000, guid: d485e44466a5085418f3b00b522f5561, type: 2}
+  - {fileID: 11400000, guid: 6f4762f7240b3d740ad69edf465538e1, type: 2}
+  - {fileID: 11400000, guid: c17ae3f52784abe42b7017554a7a95c5, type: 2}

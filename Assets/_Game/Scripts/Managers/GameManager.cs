@@ -26,6 +26,14 @@ namespace MergeAndServe.Game
             StartGame().Forget();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _taskController.RefillNewOrders().Forget();
+            }
+        }
+
         #endregion
 
         #region Private Methods
@@ -34,7 +42,7 @@ namespace MergeAndServe.Game
         {
             _dataManager.Initialize();
             await _itemManager.Initialize(_dataManager.GridData.Collections);
-            
+
             _gridManager.Initialize(_dataManager.GridData);
             _boardController.Initialize();
             _taskController.Initialize(_dataManager.TaskData);

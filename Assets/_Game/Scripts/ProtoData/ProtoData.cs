@@ -24,7 +24,7 @@ public static partial class ProtoDataReflection {
         string.Concat(
           "Cg9Qcm90b0RhdGEucHJvdG8iMAoNUHJvdG9UYXNrRGF0YRIfCgZvcmRlcnMY",
           "ASADKAsyDy5Qcm90b09yZGVyRGF0YSIrCg5Qcm90b09yZGVyRGF0YRIKCgJp",
-          "ZBgBIAEoBRINCgVpdGVtcxgCIAMoCSJDCg1Qcm90b0dyaWREYXRhEh0KBWNl",
+          "ZBgBIAEoCRINCgVpdGVtcxgCIAMoCSJDCg1Qcm90b0dyaWREYXRhEh0KBWNl",
           "bGxzGAEgAygLMg4uUHJvdG9DZWxsRGF0YRITCgtjb2xsZWN0aW9ucxgCIAMo",
           "CSJeCg1Qcm90b0NlbGxEYXRhEhEKCXBvc2l0aW9uWBgBIAEoBRIRCglwb3Np",
           "dGlvblkYAiABKAUSEAoIY2VsbFR5cGUYAyABKAUSFQoNaXRlbVNob3J0Q29k",
@@ -277,13 +277,13 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
 
   /// <summary>Field number for the "id" field.</summary>
   public const int IdFieldNumber = 1;
-  private int id_;
+  private string id_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int Id {
+  public string Id {
     get { return id_; }
     set {
-      id_ = value;
+      id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
     }
   }
 
@@ -322,7 +322,7 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override int GetHashCode() {
     int hash = 1;
-    if (Id != 0) hash ^= Id.GetHashCode();
+    if (Id.Length != 0) hash ^= Id.GetHashCode();
     hash ^= items_.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -342,9 +342,9 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     output.WriteRawMessage(this);
   #else
-    if (Id != 0) {
-      output.WriteRawTag(8);
-      output.WriteInt32(Id);
+    if (Id.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(Id);
     }
     items_.WriteTo(output, _repeated_items_codec);
     if (_unknownFields != null) {
@@ -357,9 +357,9 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (Id != 0) {
-      output.WriteRawTag(8);
-      output.WriteInt32(Id);
+    if (Id.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(Id);
     }
     items_.WriteTo(ref output, _repeated_items_codec);
     if (_unknownFields != null) {
@@ -372,8 +372,8 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public int CalculateSize() {
     int size = 0;
-    if (Id != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+    if (Id.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
     }
     size += items_.CalculateSize(_repeated_items_codec);
     if (_unknownFields != null) {
@@ -388,7 +388,7 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
     if (other == null) {
       return;
     }
-    if (other.Id != 0) {
+    if (other.Id.Length != 0) {
       Id = other.Id;
     }
     items_.Add(other.items_);
@@ -411,8 +411,8 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
-        case 8: {
-          Id = input.ReadInt32();
+        case 10: {
+          Id = input.ReadString();
           break;
         }
         case 18: {
@@ -438,8 +438,8 @@ public sealed partial class ProtoOrderData : pb::IMessage<ProtoOrderData>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
-        case 8: {
-          Id = input.ReadInt32();
+        case 10: {
+          Id = input.ReadString();
           break;
         }
         case 18: {

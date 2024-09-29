@@ -17,8 +17,8 @@ MonoBehaviour:
   Level: 5
   ProduceProbabilities:
   - ShortCode: Product_1_1
-    Ratio: 86
+    Ratio: 50
   - ShortCode: Product_1_2
-    Ratio: 8
+    Ratio: 20
   - ShortCode: Product_2_1
-    Ratio: 6
+    Ratio: 30

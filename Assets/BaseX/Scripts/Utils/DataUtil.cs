@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using BaseX.Scripts;
+using UnityEngine;
 
 namespace BaseX.Utils
 {
@@ -6,7 +8,10 @@ namespace BaseX.Utils
     {
         public static void ClearAllData()
         {
-            PlayerPrefs.Save();
+            if (Directory.Exists(DataHandler.GeneralPath))
+            {
+                Directory.Delete(DataHandler.GeneralPath,true);
+            }
             
             Debug.Log("Data deleted successfully!");
         }

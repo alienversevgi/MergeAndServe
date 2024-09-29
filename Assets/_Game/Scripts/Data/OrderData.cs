@@ -8,7 +8,7 @@ namespace MergeAndServe.Data
     [CreateAssetMenu(fileName = nameof(OrderData), menuName = Const.SOPath.SO_DATA_MENU_PATH + nameof(OrderData))]
     public class OrderData : ScriptableObject, IProtoData<ProtoOrderData>
     {
-        public int Id;
+        public string Id;
         public List<string> Items;
 
         public ProtoOrderData GetProtoData()

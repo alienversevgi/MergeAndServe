@@ -29,19 +29,19 @@ namespace MergeAndServe.Signals
         
         public struct ItemMarked
         {
-            public int OrderId;
+            public string OrderId;
             public string ItemShortCode { get; set; }
         }
         
         public struct ItemUnmarked
         {
-            public int OrderId;
+            public string OrderId;
             public string ItemShortCode { get; set; }
         }
 
         public struct OrderItemsServed
         {
-            public int Id;
+            public string Id;
         }
         
         public struct ServeRequested
@@ -52,6 +52,11 @@ namespace MergeAndServe.Signals
 
         public struct BoardFull
         {
+        }
+
+        public struct OrdersRefilled
+        {
+            
         }
     }
 }

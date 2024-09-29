@@ -8,7 +8,7 @@ namespace MergeAndServe.Data
     public class CellData : IProtoData<ProtoCellData>
     {
         public Vector2Int Position;
-        public Enums.CellType Type;
+        public CellType Type;
         public string ItemShortCode;
 
         public ProtoCellData GetProtoData()

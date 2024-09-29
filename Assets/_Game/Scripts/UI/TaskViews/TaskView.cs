@@ -19,7 +19,7 @@ namespace MergeAndServe.UI
         [Inject] private DiContainer _diContainer;
 
         private List<OrderData> _orders;
-        private Dictionary<int, OrderView> _orderViews;
+        private Dictionary<string, OrderView> _orderViews;
 
         #endregion
 
@@ -32,14 +32,23 @@ namespace MergeAndServe.UI
             SignalBus.Subscribe<GameSignals.ItemMarked>(OnItemMarked);
             SignalBus.Subscribe<GameSignals.ItemUnmarked>(OnItemUnmarked);
             SignalBus.Subscribe<GameSignals.OrderItemsServed>(OnOrderItemsServed);
-
+            SignalBus.Subscribe<GameSignals.OrdersRefilled>(OnNewOrdersAdded);
+            
             _taskController.MarkOrderItems();
         }
-        
+
+        private void OnNewOrdersAdded(GameSignals.OrdersRefilled signalData)
+        {
+            _orders = _taskController.GetAllOrder();
+            SetupUI();
+            _taskController.MarkOrderItems();
+        }
+
         public void Dispose()
         {
             SignalBus.TryUnsubscribe<GameSignals.ItemMarked>(OnItemMarked);
             SignalBus.TryUnsubscribe<GameSignals.ItemUnmarked>(OnItemUnmarked);
+            SignalBus.TryUnsubscribe<GameSignals.OrdersRefilled>(OnNewOrdersAdded);
         }
         
         #endregion
@@ -72,7 +81,7 @@ namespace MergeAndServe.UI
 
         private void SetupUI()
         {
-            _orderViews = new Dictionary<int, OrderView>();
+            _orderViews = new Dictionary<string, OrderView>();
             for (int i = 0; i < _orders.Count; i++)
             {
                 var data = _orders[i];

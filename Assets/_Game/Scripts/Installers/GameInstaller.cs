@@ -53,6 +53,7 @@ namespace MergeAndServe.Installers
             Container.DeclareSignal<GameSignals.OrderItemsServed>().OptionalSubscriber();
             Container.DeclareSignal<GameSignals.ServeRequested>().OptionalSubscriber();
             Container.DeclareSignal<GameSignals.BoardFull>().OptionalSubscriber();
+            Container.DeclareSignal<GameSignals.OrdersRefilled>().OptionalSubscriber();
         }
 
         private void BindServices()

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Cysharp.Threading.Tasks;
 using MergeAndServe.Data;
-using MergeAndServe.Enums;
 using MergeAndServe.Signals;
-using Unity.VisualScripting;
+using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace MergeAndServe.Game
 {
@@ -16,6 +16,7 @@ namespace MergeAndServe.Game
         [Inject] private SignalBus _signalBus;
         [Inject] private GridManager _gridManager;
         [Inject] private BoardController _boardController;
+        [Inject] private ItemManager _itemManager;
 
         private TaskData _data;
 
@@ -30,6 +31,7 @@ namespace MergeAndServe.Game
             _signalBus.Subscribe<GameSignals.ItemProduced>(OnItemProduced);
             _signalBus.Subscribe<GameSignals.ItemDestroyed>(OnItemDestroyed);
             _signalBus.Subscribe<GameSignals.ServeRequested>(OnServeRequested);
+            _signalBus.Subscribe<GameSignals.OrderItemsServed>(OnOrderItemsServed);
         }
 
         public List<OrderData> GetAllOrder()
@@ -72,6 +74,7 @@ namespace MergeAndServe.Game
             _signalBus.TryUnsubscribe<GameSignals.ItemProduced>(OnItemProduced);
             _signalBus.TryUnsubscribe<GameSignals.ItemDestroyed>(OnItemDestroyed);
             _signalBus.TryUnsubscribe<GameSignals.ServeRequested>(OnServeRequested);
+            _signalBus.TryUnsubscribe<GameSignals.OrderItemsServed>(OnOrderItemsServed);
         }
 
         #endregion
@@ -153,6 +156,29 @@ namespace MergeAndServe.Game
             }
         }
 
+        private List<OrderData> RandomOrderGenerate(int count, int minItemCount = 0, int maxItemCount = 2)
+        {
+            var orders = new List<OrderData>();
+
+            for (int i = 0; i < count; i++)
+            {
+                var orderData = ScriptableObject.CreateInstance<OrderData>();
+                orderData.Id = Guid.NewGuid().ToString();
+                orderData.Items = new List<string>();
+                int randomItemCount = Random.Range(minItemCount, maxItemCount);
+
+                for (int j = 0; j <= randomItemCount; j++)
+                {
+                    var randomItem = _itemManager.GetRandomProductData();
+                    orderData.Items.Add(randomItem.ShortCode);
+                }
+
+                orders.Add(orderData);
+            }
+
+            return orders;
+        }
+
         private void OnServeRequested(GameSignals.ServeRequested signalData)
         {
             var orderData = signalData.OrderData;
@@ -163,6 +189,23 @@ namespace MergeAndServe.Game
                 var item = _gridManager.GetItem(itemShortCode);
                 _boardController.Serve(item.CurrentCell, signalData.View);
             }
+        }
+
+        private void OnOrderItemsServed(GameSignals.OrderItemsServed signalData)
+        {
+            if (GetAllOrder().Count > 0)
+                return;
+
+            RefillNewOrders().Forget();
+        }
+
+        public async UniTask RefillNewOrders()
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(.5f));
+            var orders = RandomOrderGenerate(4);
+            _data.Orders = orders;
+
+            _signalBus.Fire(new GameSignals.OrdersRefilled());
         }
 
         private void OnItemProduced(GameSignals.ItemProduced signalData)
