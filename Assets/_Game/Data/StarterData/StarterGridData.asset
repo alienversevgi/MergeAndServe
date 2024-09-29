@@ -18,10 +18,10 @@ MonoBehaviour:
     ItemShortCode: 
   - Position: {x: 1, y: 0}
     Type: 0
-    ItemShortCode: 0
+    ItemShortCode: 
   - Position: {x: 2, y: 0}
     Type: 0
-    ItemShortCode: 0
+    ItemShortCode: 
   - Position: {x: 3, y: 0}
     Type: 0
     ItemShortCode: 
@@ -88,8 +88,6 @@ MonoBehaviour:
   - Position: {x: 4, y: 4}
     Type: 0
     ItemShortCode: 
-  SizeX: 5
-  SizeY: 5
   Collections:
   - Product_1
   - Product_2

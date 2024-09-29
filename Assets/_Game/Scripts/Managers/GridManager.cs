@@ -36,8 +36,8 @@ namespace MergeAndServe.Game
         public void Initialize(GridData gridData)
         {
             _gridData = gridData;
-            _rows = _gridData.SizeX;
-            _columns = _gridData.SizeY;
+            _rows = Const.Grid.SIZE_X;
+            _columns = Const.Grid.SIZE_Y;
             _cellPrefab = _prefabSettings.Cell;
             _cellSize = _cellPrefab.GetSize();
 

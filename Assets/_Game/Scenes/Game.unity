@@ -1173,6 +1173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <GridData>k__BackingField: {fileID: 0}
+  <TaskData>k__BackingField: {fileID: 0}
 --- !u!1 &1771923121
 GameObject:
   m_ObjectHideFlags: 0

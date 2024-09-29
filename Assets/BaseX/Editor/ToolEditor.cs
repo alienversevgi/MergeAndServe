@@ -1,7 +1,7 @@
-﻿using MergeAndServe.Scripts.Utils;
+﻿using BaseX.Utils;
 using UnityEditor;
 
-namespace MergeAndServe.Editor
+namespace BaseX.Editor
 {
     public static class ToolEditor
     {

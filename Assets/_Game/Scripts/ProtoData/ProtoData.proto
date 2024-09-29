@@ -1,0 +1,22 @@
+﻿syntax = "proto3";
+
+message ProtoTaskData{
+  repeated ProtoOrderData orders = 1;
+}
+
+message ProtoOrderData{
+  int32 id = 1;
+  repeated string items = 2;
+}
+
+message ProtoGridData{
+  repeated ProtoCellData cells = 1;
+  repeated string collections  = 2;
+}
+
+message ProtoCellData{
+  int32 positionX = 1;
+  int32 positionY = 2;
+  int32 cellType = 3;
+  string itemShortCode = 4;
+}

@@ -22,5 +22,11 @@
             public const string GRID_DATA = "GridData";
             public const string TASK_DATA = "TaskData";
         }
+        
+        public static class Grid
+        {
+            public const int SIZE_X = 5;
+            public const int SIZE_Y = 5;
+        }
     }
 }
